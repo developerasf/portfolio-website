@@ -1,8 +1,24 @@
 import { Pool } from 'pg';
 import { createClient } from '@supabase/supabase-js';
 
+const getConnectionString = (): string => {
+  const connString = process.env.DATABASE_URL;
+  if (!connString) return '';
+  
+  try {
+    const url = new URL(connString);
+    if (url.password) {
+      url.password = encodeURIComponent(url.password);
+      return url.toString();
+    }
+  } catch {
+    // If URL parsing fails, return as-is
+  }
+  return connString;
+};
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: getConnectionString(),
   ssl: {
     rejectUnauthorized: false,
   },
