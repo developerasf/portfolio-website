@@ -13,7 +13,6 @@ const getConnectionString = (): string => {
   try {
     const url = new URL(connString);
     console.log('Host to connect:', url.host);
-    console.log('Protocol:', url.protocol);
     return connString;
   } catch (e) {
     console.error('Failed to parse DATABASE_URL:', e);
@@ -23,14 +22,10 @@ const getConnectionString = (): string => {
 
 const pool = new Pool({
   connectionString: getConnectionString(),
-  // Force SSL for Supabase (required)
   ssl: {
     rejectUnauthorized: false,
-    // Try both TLS versions
-    minVersion: 'TLSv1.2',
   },
-  // Connection timeout
-  connectionTimeoutMillis: 10000,
+  request_timeout: 10000,
 });
 
 console.log('Database pool created');
@@ -44,25 +39,27 @@ pool.on('connect', () => {
 });
 
 export const query = async (text: string, params?: unknown[]) => {
+  const client = await pool.connect();
   try {
     const start = Date.now();
-    const res = await pool.query(text, params);
+    const res = await client.query(text, params);
     const duration = Date.now() - start;
-    console.log('Query executed', { text: text.substring(0, 30), duration, rows: res.rowCount });
+    console.log('Query executed', { duration, rows: res.rowCount });
     return res;
-  } catch (error) {
-    console.error('Query error:', error);
-    throw error;
+  } finally {
+    client.release();
   }
 };
 
-export const getClient = () => pool;
-
-export const supabaseUrl = process.env.SUPABASE_URL || '';
-export const supabaseKey = process.env.SUPABASE_ANON_KEY || '';
-
-export const supabase = supabaseUrl && supabaseKey 
-  ? createClient(supabaseUrl, supabaseKey)
-  : null;
+export const supabase = (() => {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY;
+  if (url && key) {
+    console.log('Supabase client initialized with URL:', url);
+    return createClient(url, key);
+  }
+  console.log('Supabase credentials not configured');
+  return null;
+})();
 
 export default pool;
