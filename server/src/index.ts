@@ -35,7 +35,13 @@ app.get('/api/health', async (req, res) => {
     await query('SELECT 1');
     res.json({ status: 'ok', database: 'connected', timestamp: new Date().toISOString() });
   } catch (error) {
-    res.json({ status: 'ok', database: 'disconnected', timestamp: new Date().toISOString() });
+    console.error('Health check error:', error);
+    res.status(503).json({ 
+      status: 'error', 
+      database: 'disconnected', 
+      error: error instanceof Error ? error.message : 'Unknown error',
+      timestamp: new Date().toISOString() 
+    });
   }
 });
 
