@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { query } from '../db';
+import { sendContactEmail } from '../services/email';
 
 const router = Router();
 
@@ -18,8 +19,11 @@ router.post('/', async (req, res) => {
       'INSERT INTO contact_messages (name, email, message) VALUES ($1, $2, $3) RETURNING *',
       [name, email, message]
     );
-    
-    console.log('New contact message:', result.rows[0]);
+
+    if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+      await sendContactEmail(name, email, message);
+      console.log('Email sent successfully');
+    }
     
     res.status(201).json({ 
       success: true, 
