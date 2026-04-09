@@ -3,6 +3,11 @@ import { createClient } from '@supabase/supabase-js';
 
 const getConnectionString = (): string => {
   const connString = process.env.DATABASE_URL;
+  const nodeEnv = process.env.NODE_ENV;
+  
+  console.log('NODE_ENV:', nodeEnv);
+  console.log('DATABASE_URL set:', !!connString);
+  
   if (!connString) {
     console.error('DATABASE_URL is not set!');
     return '';
@@ -10,11 +15,11 @@ const getConnectionString = (): string => {
   
   try {
     const url = new URL(connString);
-    console.log('Connecting to database host:', url.host);
-    if (url.password) {
-      url.password = encodeURIComponent(url.password);
-      return url.toString();
-    }
+    console.log('Parsed host:', url.host);
+    console.log('Parsed protocol:', url.protocol);
+    
+    // Don't encode password - pg handles it
+    return connString;
   } catch (e) {
     console.error('Failed to parse DATABASE_URL:', e);
   }
@@ -23,12 +28,10 @@ const getConnectionString = (): string => {
 
 const pool = new Pool({
   connectionString: getConnectionString(),
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
 });
 
-console.log('Database pool created');
+console.log('Database pool created with NODE_ENV:', process.env.NODE_ENV);
 
 pool.on('error', (err) => {
   console.error('Unexpected error on idle client:', err.message);
