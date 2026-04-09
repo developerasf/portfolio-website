@@ -3,16 +3,20 @@ import { createClient } from '@supabase/supabase-js';
 
 const getConnectionString = (): string => {
   const connString = process.env.DATABASE_URL;
-  if (!connString) return '';
+  if (!connString) {
+    console.error('DATABASE_URL is not set!');
+    return '';
+  }
   
   try {
     const url = new URL(connString);
+    console.log('Connecting to database host:', url.host);
     if (url.password) {
       url.password = encodeURIComponent(url.password);
       return url.toString();
     }
-  } catch {
-    // If URL parsing fails, return as-is
+  } catch (e) {
+    console.error('Failed to parse DATABASE_URL:', e);
   }
   return connString;
 };
@@ -24,9 +28,15 @@ const pool = new Pool({
   },
 });
 
+console.log('Database pool created');
+
 pool.on('error', (err) => {
-  console.error('Unexpected error on idle client', err);
+  console.error('Unexpected error on idle client:', err.message);
   process.exit(-1);
+});
+
+pool.on('connect', () => {
+  console.log('Connected to database successfully');
 });
 
 export const query = async (text: string, params?: unknown[]) => {
