@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0F172A;
+  --foreground: #F8FAFC;
+  --primary: #1E293B;
+  --primary-foreground: #F8FAFC;
+  --secondary: #334155;
+  --secondary-foreground: #F8FAFC;
+  --cta: #22C55E;
+  --cta-foreground: #0F172A;
+  --muted: #334155;
+  --muted-foreground: #94A3B8;
+  --accent: #22C55E;
+  --accent-foreground: #0F172A;
+  --card: #1E293B;
+  --card-foreground: #F8FAFC;
+  --border: #334155;
+  --input: #1E293B;
+  --ring: #22C55E;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'DM Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}

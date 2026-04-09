@@ -1,0 +1,45 @@
+import { Router } from 'express';
+import { query } from '../db';
+
+const router = Router();
+
+router.post('/', async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+    
+    if (!name || !email || !message) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Name, email, and message are required' 
+      });
+    }
+
+    const result = await query(
+      'INSERT INTO contact_messages (name, email, message) VALUES ($1, $2, $3) RETURNING *',
+      [name, email, message]
+    );
+    
+    console.log('New contact message:', result.rows[0]);
+    
+    res.status(201).json({ 
+      success: true, 
+      message: 'Message received!',
+      data: result.rows[0] 
+    });
+  } catch (error) {
+    console.error('Error saving contact message:', error);
+    res.status(500).json({ success: false, message: 'Failed to save message' });
+  }
+});
+
+router.get('/', async (req, res) => {
+  try {
+    const result = await query('SELECT * FROM contact_messages ORDER BY created_at DESC');
+    res.json({ success: true, data: result.rows });
+  } catch (error) {
+    console.error('Error fetching messages:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch messages' });
+  }
+});
+
+export default router;
