@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable} font-body bg-background text-foreground antialiased`}>
         {children}
+        <Toaster position="bottom-right" />
       </body>
     </html>
   );
