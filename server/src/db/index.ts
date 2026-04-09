@@ -3,7 +3,9 @@ import { createClient } from '@supabase/supabase-js';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 pool.on('error', (err) => {
@@ -12,11 +14,16 @@ pool.on('error', (err) => {
 });
 
 export const query = async (text: string, params?: unknown[]) => {
-  const start = Date.now();
-  const res = await pool.query(text, params);
-  const duration = Date.now() - start;
-  console.log('Executed query', { text: text.substring(0, 50), duration, rows: res.rowCount });
-  return res;
+  try {
+    const start = Date.now();
+    const res = await pool.query(text, params);
+    const duration = Date.now() - start;
+    console.log('Executed query', { text: text.substring(0, 50), duration, rows: res.rowCount });
+    return res;
+  } catch (error) {
+    console.error('Query error:', error);
+    throw error;
+  }
 };
 
 export const getClient = () => pool;
