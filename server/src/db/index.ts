@@ -13,6 +13,7 @@ const getConnectionString = (): string => {
   try {
     const url = new URL(connString);
     console.log('Host to connect:', url.host);
+    console.log('Port:', url.port);
     return connString;
   } catch (e) {
     console.error('Failed to parse DATABASE_URL:', e);
@@ -25,7 +26,6 @@ const pool = new Pool({
   ssl: {
     rejectUnauthorized: false,
   },
-  request_timeout: 10000,
 });
 
 console.log('Database pool created');
@@ -55,7 +55,7 @@ export const supabase = (() => {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_ANON_KEY;
   if (url && key) {
-    console.log('Supabase client initialized with URL:', url);
+    console.log('Supabase client initialized');
     return createClient(url, key);
   }
   console.log('Supabase credentials not configured');
