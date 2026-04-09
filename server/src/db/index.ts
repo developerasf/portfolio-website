@@ -3,10 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 
 const getConnectionString = (): string => {
   const connString = process.env.DATABASE_URL;
-  const nodeEnv = process.env.NODE_ENV;
-  
-  console.log('NODE_ENV:', nodeEnv);
-  console.log('DATABASE_URL set:', !!connString);
+  console.log('DATABASE_URL available:', !!connString);
   
   if (!connString) {
     console.error('DATABASE_URL is not set!');
@@ -15,10 +12,8 @@ const getConnectionString = (): string => {
   
   try {
     const url = new URL(connString);
-    console.log('Parsed host:', url.host);
-    console.log('Parsed protocol:', url.protocol);
-    
-    // Don't encode password - pg handles it
+    console.log('Host to connect:', url.host);
+    console.log('Protocol:', url.protocol);
     return connString;
   } catch (e) {
     console.error('Failed to parse DATABASE_URL:', e);
@@ -28,18 +23,24 @@ const getConnectionString = (): string => {
 
 const pool = new Pool({
   connectionString: getConnectionString(),
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  // Force SSL for Supabase (required)
+  ssl: {
+    rejectUnauthorized: false,
+    // Try both TLS versions
+    minVersion: 'TLSv1.2',
+  },
+  // Connection timeout
+  connectionTimeoutMillis: 10000,
 });
 
-console.log('Database pool created with NODE_ENV:', process.env.NODE_ENV);
+console.log('Database pool created');
 
 pool.on('error', (err) => {
   console.error('Unexpected error on idle client:', err.message);
-  process.exit(-1);
 });
 
 pool.on('connect', () => {
-  console.log('Connected to database successfully');
+  console.log('✅ Connected to database successfully');
 });
 
 export const query = async (text: string, params?: unknown[]) => {
@@ -47,7 +48,7 @@ export const query = async (text: string, params?: unknown[]) => {
     const start = Date.now();
     const res = await pool.query(text, params);
     const duration = Date.now() - start;
-    console.log('Executed query', { text: text.substring(0, 50), duration, rows: res.rowCount });
+    console.log('Query executed', { text: text.substring(0, 30), duration, rows: res.rowCount });
     return res;
   } catch (error) {
     console.error('Query error:', error);
