@@ -12,6 +12,10 @@ dist/
 .vscode/
 .idea/
 .opencode/
+
+# Docs (keep README.md, exclude deploy guide)
+deploy.md
+
 # OS
 .DS_Store
 Thumbs.db
