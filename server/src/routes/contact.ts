@@ -21,8 +21,12 @@ router.post('/', async (req, res) => {
     );
 
     if (process.env.SMTP_USER && process.env.SMTP_PASS) {
-      await sendContactEmail(name, email, message);
-      console.log('Email sent successfully');
+      console.log('SMTP credentials found, attempting to send email...');
+      sendContactEmail(name, email, message)
+        .then(() => console.log('Email sent successfully'))
+        .catch((err) => console.error('Email sending failed:', err.message));
+    } else {
+      console.log('SMTP credentials not configured - skipping email');
     }
     
     res.status(201).json({ 
