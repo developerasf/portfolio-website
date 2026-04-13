@@ -1,67 +1,108 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #000000;
-  --foreground: rgba(217, 224, 239, 0.6);
-  --primary: #29146A;
-  --primary-foreground: #D9E0EF;
-  --secondary: #29146A;
-  --secondary-foreground: #D9E0EF;
-  --cta: #354FE2;
-  --cta-foreground: #FFFFFF;
-  --muted: #29146A;
-  --muted-foreground: rgba(217, 224, 239, 0.6);
-  --accent: #354FE2;
-  --accent-foreground: #FFFFFF;
-  --card: #29146A;
-  --card-foreground: #D9E0EF;
-  --border: rgba(217, 224, 239, 0.1);
-  --input: #29146A;
-  --ring: #354FE2;
+  --black: #000000;
+  --royal-blue: #354FE2;
+  --persian-indigo: #29146A;
+  --periwinkle: #D9E0EF;
 }
 
 * {
-  border-color: var(--border);
+  border-color: rgba(53, 79, 226, 0.1);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'JetBrains Mono', monospace;
+  background-color: var(--black);
+  color: var(--periwinkle);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, .heading-font {
   font-family: 'Space Grotesk', sans-serif;
+  color: #FFFFFF;
 }
 
-code, pre {
+.mono-font {
   font-family: 'JetBrains Mono', monospace;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.btn-primary {
+  background-color: var(--royal-blue);
+  color: #FFFFFF;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background-color: #4a64f5;
+  box-shadow: 0 0 30px rgba(53, 79, 226, 0.4);
+  transform: translateY(-2px);
+}
+
+.card-indigo {
+  background: linear-gradient(135deg, rgba(41, 20, 106, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+  border: 1px solid rgba(53, 79, 226, 0.15);
+  transition: all 0.3s ease;
+}
+
+.card-indigo:hover {
+  border-color: var(--royal-blue);
+  background: linear-gradient(135deg, rgba(41, 20, 106, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #FFFFFF, var(--periwinkle));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-link {
+  color: var(--periwinkle);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: var(--royal-blue);
+}
+
+input, textarea {
+  background: rgba(41, 20, 106, 0.1) !important;
+  border: 1px solid rgba(53, 79, 226, 0.1) !important;
+  color: white !important;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--royal-blue) !important;
+  outline: none;
+  box-shadow: 0 0 15px rgba(53, 79, 226, 0.15);
+}
+
+.section-accent {
+  background: linear-gradient(90deg, var(--royal-blue), transparent);
+  height: 1px;
+  width: 100px;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
-  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: var(--black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--secondary);
-  border-radius: 4px;
+  background: var(--persian-indigo);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-foreground);
+  background: var(--royal-blue);
 }

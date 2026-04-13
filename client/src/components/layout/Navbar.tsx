@@ -7,9 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
+  { name: "Deployments", href: "#work" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -32,55 +30,42 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border py-4"
+          ? "bg-black/80 backdrop-blur-lg border-b border-white/5 py-4"
           : "bg-transparent py-6",
       )}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="p-2 rounded-lg bg-primary/50 border border-border">
-              <Cloud className="w-6 h-6 text-cta" />
+            <div className="w-9 h-9 bg-[#354FE2] flex items-center justify-center font-bold text-white rounded-lg rotate-3">
+              <Cloud className="w-5 h-5" />
             </div>
-            <span className="font-heading font-semibold text-lg tracking-wide">
-              AlaminFlow
+            <span className="font-bold text-xl tracking-tighter text-white uppercase italic">
+              Alamin<span className="text-[#354FE2]">.</span>Flow
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10 text-sm font-medium">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium uppercase tracking-widest"
+                className="nav-link uppercase tracking-widest text-xs"
               >
                 {item.name}
               </Link>
             ))}
-          </div>
-
-          <div className="hidden md:flex items-center gap-4">
-            <a
-              href="https://github.com/developerasf/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg hover:bg-secondary/50 transition-colors"
+            <Link
+              href="#contact"
+              className="btn-primary px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest"
             >
-              <Github className="w-5 h-5 text-muted-foreground hover:text-foreground" />
-            </a>
-            <a
-              href="https://linkedin.com/in/alamin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg hover:bg-secondary/50 transition-colors"
-            >
-              <Linkedin className="w-5 h-5 text-muted-foreground hover:text-foreground" />
-            </a>
+              Consult Now
+            </Link>
           </div>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-secondary/50 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -91,33 +76,26 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
-          className="md:hidden bg-background/95 backdrop-blur-md border-b border-border"
+          className="md:hidden bg-black/95 backdrop-blur-lg border-b border-white/5"
         >
-          <div className="px-4 py-4 space-y-4">
+          <div className="px-6 py-4 space-y-4">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="block text-muted-foreground hover:text-foreground transition-colors py-2 uppercase tracking-widest text-sm"
+                className="block nav-link uppercase tracking-widest text-xs py-2"
               >
                 {item.name}
               </Link>
             ))}
-            <div className="flex gap-4 pt-2">
-              <a
-                href="https://github.com"
-                className="p-2 rounded-lg hover:bg-secondary/50"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                className="p-2 rounded-lg hover:bg-secondary/50"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-            </div>
+            <Link
+              href="#contact"
+              onClick={() => setIsOpen(false)}
+              className="btn-primary px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block"
+            >
+              Consult Now
+            </Link>
           </div>
         </motion.div>
       )}

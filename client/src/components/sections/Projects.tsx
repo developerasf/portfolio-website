@@ -1,141 +1,115 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, ChevronRight } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
+    category: "Full Stack Web",
     title: "Portfolio",
     description: "Personal portfolio showcasing projects and skills. Built with MERN stack, Next.js, and TypeScript with animations and modern design.",
     tech: ["MERN Stack", "Next.js", "TypeScript", "Tailwind"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    category: "Web",
+    github: "https://github.com/developerasf/portfolio-website",
+    demo: "",
   },
   {
+    category: "Full Stack Platform",
     title: "E-Learning Platform",
     description: "Full-featured e-learning platform with video streaming, course management, progress tracking, and interactive quizzes.",
     tech: ["MERN Stack", "React", "Node.js", "MongoDB"],
     github: "https://github.com",
     demo: "",
-    category: "Full Stack",
   },
   {
+    category: "Web Application",
     title: "Movie Site",
     description: "Movie discovery application with search, filtering, favorites, and detailed movie information using TMDB API.",
     tech: ["MERN Stack", "React", "API Integration"],
     github: "https://github.com",
     demo: "https://demo.com",
-    category: "Web",
   },
   {
+    category: "Desktop Application",
     title: "Banking Management System",
     description: "Desktop banking application with account management, transactions, loan processing, and report generation.",
     tech: ["Java", "JavaFX", "MySQL"],
     github: "https://github.com",
     demo: "",
-    category: "Desktop",
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 bg-card/30">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-4 italic">
-            Featured <span className="text-cta">Projects</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Some of the projects I've worked on to solve real problems
-          </p>
-        </motion.div>
+    <section id="work" className="max-w-7xl mx-auto px-6 mb-40">
+      <div className="mb-16">
+        <h2 className="text-4xl font-bold mb-4">Enterprise Deployments</h2>
+        <div className="section-accent" />
+      </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <motion.article
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="group bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 hover:border-cta/50 transition-all duration-300 hover:shadow-lg hover:shadow-cta/5 cursor-pointer"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <span className="inline-block px-3 py-1 bg-primary/50 border border-border/50 text-cta text-xs font-mono rounded-full mb-2 uppercase tracking-widest">
-                    {project.category}
-                  </span>
-                  <h3 className="text-xl font-heading font-semibold group-hover:text-cta transition-colors">
-                    {project.title}
-                  </h3>
-                </div>
-              </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {projects.map((project, index) => (
+          <motion.article
+            key={project.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="card-indigo rounded-[2rem] p-10 group relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-100 transition-opacity">
+              <span className="text-4xl font-black text-[#354FE2]">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+            </div>
+            
+            <div className="mb-8">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#354FE2] mb-2 block">
+                {project.category}
+              </span>
+              <h3 className="text-3xl font-bold text-white group-hover:text-[#354FE2] transition-colors">
+                {project.title}
+              </h3>
+            </div>
+            
+            <p className="text-[#D9E0EF]/50 mb-8 leading-relaxed">
+              {project.description}
+            </p>
+            
+            <div className="flex flex-wrap gap-3">
+              {project.tech.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-4 py-1.5 rounded-full border border-white/5 text-[10px] font-bold text-[#D9E0EF]"
+                >
+                  {tech.toUpperCase()}
+                </span>
+              ))}
+            </div>
 
-              <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-1 bg-primary/50 border border-border/50 rounded text-xs text-muted-foreground"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex items-center gap-4 pt-4 border-t border-border/50">
+            <div className="flex items-center gap-4 pt-6 mt-6 border-t border-white/5">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Github className="w-4 h-4" />
+                Code
+              </a>
+              {project.demo && (
                 <a
-                  href={project.github}
+                  href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <Github className="w-4 h-4" />
-                  Code
+                  <ExternalLink className="w-4 h-4" />
+                  Demo
                 </a>
-                {project.demo && (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Demo
-                  </a>
-                )}
-              </div>
-            </motion.article>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mt-12"
-        >
-          <a
-            href="https://github.com/developerasf/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-2xl font-medium hover:bg-primary/50 hover:text-cta hover:border-cta/50 transition-all cursor-pointer"
-          >
-            View All Projects
-            <ChevronRight className="w-4 h-4" />
-          </a>
-        </motion.div>
+              )}
+            </div>
+          </motion.article>
+        ))}
       </div>
     </section>
   );
