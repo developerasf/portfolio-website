@@ -8,25 +8,25 @@ const skillCategories = [
     title: "Frontend",
     icon: Code2,
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "JavaScript", "HTML/CSS"],
-    color: "from-blue-500 to-cyan-400",
+    color: "from-blue-600 to-blue-400",
   },
   {
     title: "Backend",
     icon: Cpu,
     skills: ["Node.js", "Express", "Python", "Java", "C++", "REST APIs"],
-    color: "from-green-500 to-emerald-400",
+    color: "from-indigo-600 to-indigo-400",
   },
   {
     title: "Database",
     icon: Database,
-    skills: ["MySQL", "PostgreSQL", "MongoDB", "SQL", "Database Design"],
-    color: "from-purple-500 to-pink-400",
+    skills: ["MongoDB", "MySQL", "PostgreSQL", "SQL", "Database Design"],
+    color: "from-purple-600 to-purple-400",
   },
   {
     title: "Tools & Others",
     icon: Brain,
-    skills: ["Git", "Docker", "AWS", "Linux", "Vercel", "ML Basics"],
-    color: "from-orange-500 to-red-400",
+    skills: ["Git", "Docker", "AWS", "Linux", "Vercel", "Cloud"],
+    color: "from-cyan-600 to-cyan-400",
   },
 ];
 
@@ -43,7 +43,7 @@ export default function Skills() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-4 italic">
             Tech <span className="text-cta">Stack</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -59,19 +59,19 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: categoryIndex * 0.1 }}
-              className="bg-card border border-border rounded-2xl p-6 hover:border-cta/30 transition-all duration-300 group"
+              className="bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 hover:border-cta/30 transition-all duration-300 group"
             >
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                 <category.icon className="w-6 h-6 text-white" />
               </div>
 
-              <h3 className="text-lg font-heading font-semibold mb-4">{category.title}</h3>
+              <h3 className="text-lg font-heading font-semibold mb-4 uppercase tracking-widest text-sm">{category.title}</h3>
 
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1.5 bg-secondary/50 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-cta/10 transition-colors cursor-pointer"
+                    className="px-3 py-1.5 bg-primary/50 border border-border/50 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-cta/10 transition-colors cursor-pointer"
                   >
                     {skill}
                   </span>
@@ -90,7 +90,7 @@ export default function Skills() {
         >
           <p className="text-muted-foreground">
             Always learning and exploring new technologies →
-            <span className="text-cta font-mono ml-2">Currently: MLOps, Cloud Architecture</span>
+            <span className="text-cta font-mono ml-2">Currently: Cloud Architecture, MERN Stack</span>
           </p>
         </motion.div>
       </div>

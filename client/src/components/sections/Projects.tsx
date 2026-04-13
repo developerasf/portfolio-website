@@ -5,52 +5,36 @@ import { ExternalLink, Github, ChevronRight } from "lucide-react";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with React, Node.js, Express, and MongoDB. Features include user authentication, shopping cart, payment integration, and admin dashboard.",
-    tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    category: "Full Stack",
-  },
-  {
-    title: "Student Management System",
-    description: "Desktop application for managing student records, grades, and attendance. Built with Java and MySQL for data persistence.",
-    tech: ["Java", "MySQL", "JavaFX"],
-    github: "https://github.com",
-    demo: "",
-    category: "Desktop",
-  },
-  {
-    title: "ML Pipeline Automation",
-    description: "Automated ML model training and deployment pipeline using Python, Docker, and CI/CD. Handles data preprocessing, model training, and deployment.",
-    tech: ["Python", "Docker", "MLflow", "AWS"],
-    github: "https://github.com",
-    demo: "",
-    category: "MLOps",
-  },
-  {
-    title: "Real-time Chat Application",
-    description: "WebSocket-based chat application with rooms, file sharing, and real-time messaging. Built with React and Socket.io.",
-    tech: ["React", "Socket.io", "Node.js", "MongoDB"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    category: "Full Stack",
-  },
-  {
-    title: "Portfolio Website",
-    description: "Personal portfolio showcasing projects and skills. Built with Next.js, TypeScript, and Tailwind CSS with animations.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+    title: "Portfolio",
+    description: "Personal portfolio showcasing projects and skills. Built with MERN stack, Next.js, and TypeScript with animations and modern design.",
+    tech: ["MERN Stack", "Next.js", "TypeScript", "Tailwind"],
     github: "https://github.com",
     demo: "https://demo.com",
     category: "Web",
   },
   {
-    title: "API Gateway Service",
-    description: "RESTful API gateway with rate limiting, authentication, and request routing. Built with Node.js and Express.",
-    tech: ["Node.js", "Express", "Redis", "JWT"],
+    title: "E-Learning Platform",
+    description: "Full-featured e-learning platform with video streaming, course management, progress tracking, and interactive quizzes.",
+    tech: ["MERN Stack", "React", "Node.js", "MongoDB"],
     github: "https://github.com",
     demo: "",
-    category: "Backend",
+    category: "Full Stack",
+  },
+  {
+    title: "Movie Site",
+    description: "Movie discovery application with search, filtering, favorites, and detailed movie information using TMDB API.",
+    tech: ["MERN Stack", "React", "API Integration"],
+    github: "https://github.com",
+    demo: "https://demo.com",
+    category: "Web",
+  },
+  {
+    title: "Banking Management System",
+    description: "Desktop banking application with account management, transactions, loan processing, and report generation.",
+    tech: ["Java", "JavaFX", "MySQL"],
+    github: "https://github.com",
+    demo: "",
+    category: "Desktop",
   },
 ];
 
@@ -65,7 +49,7 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-4 italic">
             Featured <span className="text-cta">Projects</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -73,7 +57,7 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
@@ -81,11 +65,11 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="group bg-card border border-border rounded-2xl p-6 hover:border-cta/50 transition-all duration-300 hover:shadow-lg hover:shadow-cta/5 cursor-pointer"
+              className="group bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 hover:border-cta/50 transition-all duration-300 hover:shadow-lg hover:shadow-cta/5 cursor-pointer"
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <span className="inline-block px-3 py-1 bg-cta/10 text-cta text-xs font-mono rounded-full mb-2">
+                  <span className="inline-block px-3 py-1 bg-primary/50 border border-border/50 text-cta text-xs font-mono rounded-full mb-2 uppercase tracking-widest">
                     {project.category}
                   </span>
                   <h3 className="text-xl font-heading font-semibold group-hover:text-cta transition-colors">
@@ -102,7 +86,7 @@ export default function Projects() {
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2 py-1 bg-secondary/50 rounded text-xs text-muted-foreground"
+                    className="px-2 py-1 bg-primary/50 border border-border/50 rounded text-xs text-muted-foreground"
                   >
                     {tech}
                   </span>
@@ -143,10 +127,10 @@ export default function Projects() {
           className="text-center mt-12"
         >
           <a
-            href="https://github.com"
+            href="https://github.com/developerasf/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg font-medium hover:bg-cta/10 hover:text-cta hover:border-cta/50 transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-2xl font-medium hover:bg-primary/50 hover:text-cta hover:border-cta/50 transition-all cursor-pointer"
           >
             View All Projects
             <ChevronRight className="w-4 h-4" />

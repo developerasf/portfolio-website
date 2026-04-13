@@ -4,10 +4,9 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  { icon: Mail, href: "mailto:hello@developer.com", label: "Email" },
+  { icon: Github, href: "https://github.com/developerasf/", label: "GitHub" },
+  { icon: Linkedin, href: "https://linkedin.com/in/alamin", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:alamin@email.com", label: "Email" },
 ];
 
 export default function Footer() {
@@ -17,7 +16,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <h3 className="font-heading font-semibold text-lg mb-2">Let's Build Something Amazing</h3>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-sm uppercase tracking-widest text-xs">
               Open for opportunities and collaborations
             </p>
           </div>
@@ -31,7 +30,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 rounded-lg bg-secondary/50 hover:bg-cta/20 hover:text-cta transition-colors cursor-pointer"
+                className="p-3 rounded-xl bg-primary/50 border border-border hover:border-cta/50 hover:text-cta transition-colors cursor-pointer"
               >
                 <social.icon className="w-5 h-5" />
               </motion.a>
@@ -41,7 +40,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-8 border-t border-border/50 text-center">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Full Stack Developer. Built with React, Next.js & Tailwind
+            © {new Date().getFullYear()} AlaminFlow. Built with React, Next.js & Tailwind
           </p>
         </div>
       </div>

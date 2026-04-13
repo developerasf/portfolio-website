@@ -6,13 +6,13 @@ import { User, GraduationCap, Target, Lightbulb } from "lucide-react";
 const highlights = [
   {
     icon: GraduationCap,
-    title: "Computer Science Student",
-    description: "Pursuing CSE at a renowned university",
+    title: "CSE Student",
+    description: "Studying Computer Science & Engineering at AIUB",
   },
   {
     icon: Target,
-    title: "Future SWE / MLOps",
-    description: "Building towards software engineering & ML operations",
+    title: "Future SWE",
+    description: "Aspiring to become a Software Engineer",
   },
   {
     icon: Lightbulb,
@@ -37,7 +37,7 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-heading font-bold mb-4 italic">
             About <span className="text-cta">Me</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -52,17 +52,16 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="bg-card border border-border rounded-2xl p-8">
+            <div className="bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-8">
               <h3 className="text-xl font-heading font-semibold mb-4">Who I Am</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                I'm a Computer Science student with a strong passion for full-stack development 
-                and software engineering. My tech stack includes MERN (MongoDB, Express, React, Node.js), 
-                SQL databases, Python, Java, and C++.
+                I'm a passionate full stack engineer Currently studying CSE at AIUB. 
+                My tech stack includes MERN (MongoDB, Express, React, Node.js), 
+                Java, Python, and C++.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                I'm particularly interested in SWE and MLOps roles, where I can combine my 
-                programming skills with my passion for building scalable systems and 
-                machine learning pipelines.
+                I'm working towards becoming a skilled Software Engineer, where I can combine my 
+                programming skills with my passion for building scalable and innovative solutions.
               </p>
             </div>
           </motion.div>
@@ -81,9 +80,9 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: 0.1 * index }}
-                className="flex items-start gap-4 p-4 bg-card/50 border border-border/50 rounded-xl hover:border-cta/30 transition-colors cursor-pointer"
+                className="flex items-start gap-4 p-4 bg-primary/30 border border-border/50 rounded-xl hover:border-cta/30 transition-colors cursor-pointer"
               >
-                <div className="p-3 bg-cta/10 rounded-lg">
+                <div className="p-3 bg-primary/50 border border-border/50 rounded-lg">
                   <item.icon className="w-5 h-5 text-cta" />
                 </div>
                 <div>

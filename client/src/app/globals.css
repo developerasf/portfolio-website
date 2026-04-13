@@ -1,27 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #0F172A;
-  --foreground: #F8FAFC;
-  --primary: #1E293B;
-  --primary-foreground: #F8FAFC;
-  --secondary: #334155;
-  --secondary-foreground: #F8FAFC;
-  --cta: #22C55E;
-  --cta-foreground: #0F172A;
-  --muted: #334155;
-  --muted-foreground: #94A3B8;
-  --accent: #22C55E;
-  --accent-foreground: #0F172A;
-  --card: #1E293B;
-  --card-foreground: #F8FAFC;
-  --border: #334155;
-  --input: #1E293B;
-  --ring: #22C55E;
+  --background: #000000;
+  --foreground: rgba(217, 224, 239, 0.6);
+  --primary: #29146A;
+  --primary-foreground: #D9E0EF;
+  --secondary: #29146A;
+  --secondary-foreground: #D9E0EF;
+  --cta: #354FE2;
+  --cta-foreground: #FFFFFF;
+  --muted: #29146A;
+  --muted-foreground: rgba(217, 224, 239, 0.6);
+  --accent: #354FE2;
+  --accent-foreground: #FFFFFF;
+  --card: #29146A;
+  --card-foreground: #D9E0EF;
+  --border: rgba(217, 224, 239, 0.1);
+  --input: #29146A;
+  --ring: #354FE2;
 }
 
 * {
@@ -31,7 +31,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 h1, h2, h3, h4, h5, h6 {

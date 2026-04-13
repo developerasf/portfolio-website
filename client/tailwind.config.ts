@@ -13,28 +13,28 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: {
-          DEFAULT: "#1E293B",
-          foreground: "#F8FAFC",
+          DEFAULT: "#29146A",
+          foreground: "#D9E0EF",
         },
         secondary: {
-          DEFAULT: "#334155",
-          foreground: "#F8FAFC",
+          DEFAULT: "#29146A",
+          foreground: "#D9E0EF",
         },
         cta: {
-          DEFAULT: "#22C55E",
-          foreground: "#0F172A",
+          DEFAULT: "#354FE2",
+          foreground: "#FFFFFF",
         },
         muted: {
-          DEFAULT: "#334155",
-          foreground: "#94A3B8",
+          DEFAULT: "#29146A",
+          foreground: "rgba(217, 224, 239, 0.6)",
         },
         accent: {
-          DEFAULT: "#22C55E",
-          foreground: "#0F172A",
+          DEFAULT: "#354FE2",
+          foreground: "#FFFFFF",
         },
         card: {
-          DEFAULT: "#1E293B",
-          foreground: "#F8FAFC",
+          DEFAULT: "#29146A",
+          foreground: "#D9E0EF",
         },
         border: "var(--border)",
         input: "var(--input)",
@@ -42,7 +42,6 @@ const config: Config = {
       },
       fontFamily: {
         heading: ["Space Grotesk", "sans-serif"],
-        body: ["DM Sans", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
       keyframes: {
@@ -58,6 +57,9 @@ const config: Config = {
       animation: {
         "fade-in": "fade-in 0.5s ease-out forwards",
         "slide-in-left": "slide-in-left 0.5s ease-out forwards",
+      },
+      borderRadius: {
+        "2xl": "2rem",
       },
     },
   },

@@ -6,8 +6,8 @@ import { ArrowRight, Download } from "lucide-react";
 export default function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cta/10 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(53,79,226,0.15)_0%,transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(41,20,106,0.3)_0%,transparent_50%)]" />
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -20,20 +20,20 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-block px-4 py-2 rounded-full bg-cta/10 text-cta text-sm font-mono mb-6"
+              className="inline-block px-4 py-2 rounded-full bg-primary/50 border border-border text-sm font-mono mb-6 uppercase tracking-widest"
             >
-              {"<Hello />"} World
+              {"// Hello, World"}
             </motion.span>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-4 italic">
               I'm a{" "}
               <span className="text-cta">Full Stack</span>{" "}
-              Developer
+              Engineer
             </h1>
 
-            <p className="text-lg text-muted-foreground mb-8 max-w-xl">
-              Building elegant solutions with MERN, SQL, Python, Java & C++. 
-              Passionate about software engineering and MLOps. Currently pursuing CSE at a renowned university.
+            <p className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
+              Passionate full stack engineer. Building scalable solutions with MERN Stack, Java, Python & C++. 
+              Currently pursuing CSE at AIUB.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -41,7 +41,7 @@ export default function Hero() {
                 href="#projects"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-cta text-cta-foreground rounded-lg font-medium hover:bg-cta/90 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-cta text-cta-foreground rounded-2xl font-medium hover:bg-cta/90 transition-colors cursor-pointer border border-transparent"
               >
                 View Projects
                 <ArrowRight className="w-4 h-4" />
@@ -51,7 +51,7 @@ export default function Hero() {
                 href="#contact"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg font-medium hover:bg-secondary/50 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-2xl font-medium hover:bg-primary/50 transition-colors cursor-pointer"
               >
                 Contact Me
               </motion.a>
@@ -60,15 +60,15 @@ export default function Hero() {
             <div className="mt-12 flex items-center gap-8">
               <div>
                 <p className="text-3xl font-heading font-bold text-cta">2+</p>
-                <p className="text-muted-foreground text-sm">Years Learning</p>
+                <p className="text-muted-foreground text-sm uppercase tracking-widest">Years Learning</p>
               </div>
               <div>
                 <p className="text-3xl font-heading font-bold text-cta">15+</p>
-                <p className="text-muted-foreground text-sm">Projects</p>
+                <p className="text-muted-foreground text-sm uppercase tracking-widest">Projects</p>
               </div>
               <div>
                 <p className="text-3xl font-heading font-bold text-cta">5</p>
-                <p className="text-muted-foreground text-sm">Tech Stacks</p>
+                <p className="text-muted-foreground text-sm uppercase tracking-widest">Tech Stacks</p>
               </div>
             </div>
           </motion.div>
@@ -81,9 +81,9 @@ export default function Hero() {
           >
             <div className="relative w-full aspect-square max-w-md mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-cta/20 to-primary/20 rounded-3xl rotate-6" />
-              <div className="absolute inset-0 bg-card rounded-3xl border border-border overflow-hidden">
+              <div className="absolute inset-0 bg-card/80 backdrop-blur-sm rounded-2xl border border-border overflow-hidden">
                 <div className="p-6 space-y-4">
-                  <div className="flex items-center gap-3 p-3 bg-secondary/50 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 bg-primary/50 border border-border/50 rounded-xl">
                     <div className="w-12 h-12 bg-cta/20 rounded-lg flex items-center justify-center">
                       <span className="text-cta font-mono text-lg">{"</>"}</span>
                     </div>
@@ -92,16 +92,16 @@ export default function Hero() {
                       <p className="text-muted-foreground text-sm">React, Node.js, Express</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-secondary/50 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 bg-primary/50 border border-border/50 rounded-xl">
                     <div className="w-12 h-12 bg-cta/20 rounded-lg flex items-center justify-center">
                       <span className="text-cta font-mono text-lg">⊞</span>
                     </div>
                     <div>
                       <p className="font-heading font-semibold">Database</p>
-                      <p className="text-muted-foreground text-sm">MySQL, PostgreSQL, MongoDB</p>
+                      <p className="text-muted-foreground text-sm">MongoDB, MySQL</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-secondary/50 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 bg-primary/50 border border-border/50 rounded-xl">
                     <div className="w-12 h-12 bg-cta/20 rounded-lg flex items-center justify-center">
                       <span className="text-cta font-mono text-lg">⬡</span>
                     </div>
@@ -117,7 +117,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="absolute -top-4 -right-4 w-16 h-16 bg-cta/20 rounded-2xl border border-cta/30 backdrop-blur-sm flex items-center justify-center"
+              className="absolute -top-4 -right-4 w-16 h-16 bg-primary/50 rounded-2xl border border-border backdrop-blur-sm flex items-center justify-center"
             >
               <span className="text-cta text-2xl">⚡</span>
             </motion.div>
