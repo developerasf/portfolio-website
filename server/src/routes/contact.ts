@@ -6,7 +6,7 @@ const router = Router();
 
 router.post('/', async (req, res) => {
   try {
-    const { name, email, message } = req.body;
+    const { name, email, message, subject } = req.body;
     
     if (!name || !email || !message) {
       return res.status(400).json({ 
@@ -16,13 +16,13 @@ router.post('/', async (req, res) => {
     }
 
     const result = await query(
-      'INSERT INTO contact_messages (name, email, message) VALUES ($1, $2, $3) RETURNING *',
-      [name, email, message]
+      'INSERT INTO contact_messages (name, email, subject, message) VALUES ($1, $2, $3, $4) RETURNING *',
+      [name, email, subject || null, message]
     );
 
     if (process.env.SMTP_USER && process.env.SMTP_PASS) {
       console.log('SMTP credentials found, attempting to send email...');
-      sendContactEmail(name, email, message)
+      sendContactEmail(name, email, message, subject)
         .then(() => console.log('Email sent successfully'))
         .catch((err) => console.error('Email sending failed:', err.message));
     } else {
