@@ -16,8 +16,8 @@ const PORT = process.env.PORT || 5000;
 app.use(helmet());
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://portfolio-api-rs1i.onrender.com', 'https://alaminflow.vercel.app', 'https://alaminflow.com', 'https://portfolio-website-five-sage-34.vercel.app']
-    : ['http://localhost:3000'],
+    ? ['https://portfolio-api-rs1i.onrender.com', 'https://alaminflow.vercel.app', 'https://alaminflow.com', 'https://www.alaminflow.com']
+    : ['http://localhost:3000', 'http://localhost:5173'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
