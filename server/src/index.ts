@@ -45,6 +45,22 @@ app.get('/api/health', async (req, res) => {
   }
 });
 
+// Root route so visitors don't see "Cannot GET /"
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Welcome to the Portfolio API!',
+    status: 'Running',
+    docs: '/api/health'
+  });
+});
+
+app.get('/api', (req, res) => {
+  res.json({ 
+    message: 'Portfolio API Base',
+    status: 'Running'
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
