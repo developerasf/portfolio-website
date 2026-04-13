@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ChevronRight } from "lucide-react";
 
 const projects = [
   {
@@ -111,6 +111,24 @@ export default function Projects() {
           </motion.article>
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="text-center mt-16"
+      >
+        <a
+          href="https://github.com/developerasf/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest border border-white/10 hover:border-[#354FE2]/50 transition-all"
+        >
+          View More
+          <ChevronRight className="w-4 h-4" />
+        </a>
+      </motion.div>
     </section>
   );
 }
