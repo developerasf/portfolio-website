@@ -1,11 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/developerasf/", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/alamin", label: "LinkedIn" },
+  {
+    icon: Linkedin,
+    href: "https://linkedin.com/in/alaminflow",
+    label: "LinkedIn",
+  },
   { icon: Mail, href: "mailto:hello@alaminflow.com", label: "Email" },
 ];
 
@@ -19,22 +22,49 @@ export default function Footer() {
               ALAMIN<span className="text-[#354FE2]">.</span>FLOW
             </h4>
             <p className="text-[#D9E0EF]/40 max-w-sm text-sm">
-              Building reliable systems for the modern web. From core architecture to final deployment.
+              Building reliable systems for the modern web. From core
+              architecture to final deployment.
             </p>
           </div>
           <div className="flex gap-16 md:justify-end">
             <div>
-              <p className="text-[#354FE2] text-xs font-bold uppercase tracking-widest mb-6">Social</p>
+              <p className="text-[#354FE2] text-xs font-bold uppercase tracking-widest mb-6">
+                Social
+              </p>
               <ul className="space-y-4 text-sm font-medium">
-                <li><a href="https://github.com/developerasf/" className="nav-link">GitHub</a></li>
-                <li><a href="https://linkedin.com/in/alamin" className="nav-link">LinkedIn</a></li>
+                <li>
+                  <a
+                    href="https://github.com/developerasf/"
+                    className="nav-link"
+                  >
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://linkedin.com/in/alaminflow"
+                    className="nav-link"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
-              <p className="text-[#354FE2] text-xs font-bold uppercase tracking-widest mb-6">Contact</p>
+              <p className="text-[#354FE2] text-xs font-bold uppercase tracking-widest mb-6">
+                Contact
+              </p>
               <ul className="space-y-4 text-sm font-medium">
-                <li><a href="mailto:hello@alaminflow.com" className="nav-link">hello@alaminflow.com</a></li>
-                <li><span className="text-[#D9E0EF]/30 uppercase mono-font">UTC +6</span></li>
+                <li>
+                  <a href="mailto:hello@alaminflow.com" className="nav-link">
+                    hello@alaminflow.com
+                  </a>
+                </li>
+                <li>
+                  <span className="text-[#D9E0EF]/30 uppercase mono-font">
+                    UTC +6
+                  </span>
+                </li>
               </ul>
             </div>
           </div>
